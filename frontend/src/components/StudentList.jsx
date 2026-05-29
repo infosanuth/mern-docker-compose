@@ -1,9 +1,9 @@
 import React from 'react'
 
 const students = [
-  { id: 1, name: 'Sanuth De Silva', email: 'sanuthv@gmail.com', age: 24, stream: 'Mathematics' },
-  { id: 2, name: 'Thamadhi Mendis', email: 'thamadhim@gmail.com', age: 24, stream: 'Science' },
-  { id: 3, name: 'Ravindi Fernando', email: 'ravindif@gmail.com', age: 23, stream: 'Commerce' },
+  { id: 1, name: 'Sanuth De Silva', age: 24, stream: 'Mathematics' },
+  { id: 2, name: 'Thamadhi Mendis', age: 24, stream: 'Science' },
+  { id: 3, name: 'Ravindi Fernando', age: 23, stream: 'Commerce' },
 ]
 
 const StudentList = () => {
@@ -16,7 +16,6 @@ const StudentList = () => {
             <tr>
               <th className="px-6 py-5 font-bold">#</th>
               <th className="px-6 py-5 font-bold">Name</th>
-              <th className="px-6 py-5 font-bold">Email</th>
               <th className="px-6 py-5 font-bold">Age</th>
               <th className="px-6 py-5 font-bold text-center">Stream</th>
             </tr>
@@ -29,7 +28,6 @@ const StudentList = () => {
               >
                 <td className="px-6 py-4 font-bold text-gray-400">{index + 1}</td>
                 <td className="px-6 py-4 font-extrabold text-gray-900">{student.name}</td>
-                <td className="px-6 py-4 font-semibold text-blue-600">{student.email}</td>
                 <td className="px-6 py-4 font-bold text-gray-700">{student.age}</td>
                 <td className="px-6 py-4 text-center">
                   <span className="bg-blue-100 text-blue-700 font-bold text-xs px-3 py-1 rounded-full">
