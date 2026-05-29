@@ -1,9 +1,12 @@
 import React from 'react'
+import Navbar from './components/Navbar'
+import StudentList from './components/StudentList'
 
 const App = () => {
   return (
-    <div>
-      <h1 className="text-3xl font-bold text-blue-600">Docker Compose</h1>
+    <div className="min-h-screen bg-gray-100">
+      <Navbar />
+      <StudentList />
     </div>
   )
 }
