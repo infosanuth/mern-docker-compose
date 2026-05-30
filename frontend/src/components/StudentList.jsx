@@ -1,12 +1,10 @@
 import React from 'react'
-
-const students = [
-  { id: 1, name: 'Sanuth De Silva', age: 24, stream: 'Mathematics' },
-  { id: 2, name: 'Thamadhi Mendis', age: 24, stream: 'Science' },
-  { id: 3, name: 'Ravindi Fernando', age: 23, stream: 'Commerce' },
-]
+import { Pencil, Trash2 } from 'lucide-react'
+import { useAppContext } from '../context/AppContext'
 
 const StudentList = () => {
+  const { students, deleteStudent } = useAppContext()
+
   return (
     <div className="p-8">
       <h2 className="text-2xl font-extrabold text-gray-800 mb-4 tracking-tight">Student Records</h2>
@@ -18,12 +16,13 @@ const StudentList = () => {
               <th className="px-6 py-5 font-bold">Name</th>
               <th className="px-6 py-5 font-bold">Age</th>
               <th className="px-6 py-5 font-bold text-center">Stream</th>
+              <th className="px-6 py-5 font-bold text-center">Action</th>
             </tr>
           </thead>
           <tbody>
             {students.map((student, index) => (
               <tr
-                key={student.id}
+                key={student._id}
                 className={`border-b border-gray-100 ${index % 2 === 0 ? 'bg-white' : 'bg-gray-50'} hover:bg-blue-50 hover:scale-[1.001] transition-all duration-150`}
               >
                 <td className="px-6 py-4 font-bold text-gray-400">{index + 1}</td>
@@ -33,6 +32,23 @@ const StudentList = () => {
                   <span className="bg-blue-100 text-blue-700 font-bold text-xs px-3 py-1 rounded-full">
                     {student.stream}
                   </span>
+                </td>
+                <td className="px-6 py-4 text-center">
+                  <div className="flex items-center justify-center gap-2">
+                    <button
+                      className="p-2 rounded-lg text-blue-600 hover:bg-blue-100 transition-colors duration-150"
+                      title="Edit"
+                    >
+                      <Pencil size={16} />
+                    </button>
+                    <button
+                      onClick={() => deleteStudent(student._id)}
+                      className="p-2 rounded-lg text-red-500 hover:bg-red-100 transition-colors duration-150"
+                      title="Delete"
+                    >
+                      <Trash2 size={16} />
+                    </button>
+                  </div>
                 </td>
               </tr>
             ))}

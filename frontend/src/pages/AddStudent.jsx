@@ -1,19 +1,21 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { UserPlus } from 'lucide-react'
+import { useAppContext } from '../context/AppContext'
 
 const AddStudent = () => {
   const navigate = useNavigate()
+  const { addStudent } = useAppContext()
   const [form, setForm] = useState({ name: '', age: '', stream: '' })
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value })
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
     if (!form.name || !form.age || !form.stream) return
-    // TODO: send to backend
+    await addStudent({ ...form, age: Number(form.age) })
     navigate('/')
   }
 
